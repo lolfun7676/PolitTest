@@ -207,6 +207,12 @@
         }
         if (a == 3){
             document.getElementById("ideology").classList = "hidden";
+            if (prev == document.getElementById("con_ref")){
+                prev = document.getElementById("question2");
+            }
+            if (prev == document.getElementById("con_rev")){
+                prev = document.getElementById("question1");
+            }
         }
     }
     function con_rev(){
