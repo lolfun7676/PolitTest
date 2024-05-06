@@ -1,0 +1,277 @@
+<head>
+    <style>
+        .hidden{
+            display: none;
+        }
+        body {
+            margin: 0 auto;
+            width: 80%;
+            justify-items: center;
+            align-items: center;
+        }
+        html {
+            font-family: 'Jost', sans-serif;
+            background-color: #DDD;
+            color: #000;
+            display: grid;
+            margin: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #333 #CCC;
+        }
+        #question {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
+            align-items: center;
+            background-color: #FFF;
+            font-size: 3em;
+            max-width: 80%;
+            height: 200px;
+            max-height: 100%;
+            margin: 1em auto;
+            padding: 1em;
+            border-radius: 0.5em;
+            text-align: center;
+        }
+        button {
+            background-color: #2196f3;
+            color: #DDD;
+            font-family: inherit;
+            font-size: 2em;
+            width: 30%;
+            min-width: 400px;
+            padding: 0.3em;
+            border: 0;
+            border-radius: 10px;
+            display: block;
+            text-align: center;
+            margin: 0.5em auto;
+            cursor: pointer;
+        }
+        #image {
+            display: block;
+            margin: 2% auto;
+            max-width: 50%;
+            height: auto;
+            border-radius: 2em;
+        }
+        #result {
+            font-size: 2em;
+            width: 75%;
+            margin: auto;
+            text-align: center;
+        }
+        #back_button {
+            background-color: #333;
+            font-size: 1.5em;
+            width: 10%;
+            min-width: 180px;
+        }
+    </style>
+</head>
+<body>
+    <div id="question1" >
+        <div id="question">Are you part of the military organisation that aims to change the political system or protect it?</div>
+        <button onclick="con_rev()" style="background-color: rgb(20, 227, 113); color: rgb(0, 0, 0);">
+            No
+        </button>
+        <button onclick="next(1)" style="background-color: rgb(227, 20, 79); color: rgb(0, 0, 0);">
+            No
+        </button>
+    </div>
+    <div id="question2" class="hidden">
+        <div id="question">Do you work in the government and can influence new policies that regulate the political system?</div>
+        <button onclick="con_ref()" style="background-color: rgb(20, 227, 113); color: rgb(0, 0, 0);">
+            Yes
+        </button>
+        <button onclick="next(2)" style="background-color: rgb(227, 20, 79); color: rgb(0, 0, 0);">
+            No
+        </button>
+        <button id="back_button" onclick="back(2)">
+            Back
+        </button>
+    </div>
+    <div id="question3" class="hidden">
+        <div id="question">Do you control mass media resource and use it to influence population with your political views?</div>
+        <button onclick="finish(3)" style="background-color: rgb(20, 227, 113); color: rgb(0, 0, 0);">
+            Yes
+        </button>
+        <button onclick="next(3)" style="background-color: rgb(227, 20, 79); color: rgb(0, 0, 0);">
+            No
+        </button>
+        <button id="back_button" onclick="back(3)">
+            Back
+        </button>
+    </div>
+    <div id="question4" class="hidden">
+        <div id="question">Do you commit crimes alone or with friends?</div>
+        <button onclick="result(1)" style="background-color: rgb(20, 227, 113); color: rgb(0, 0, 0);">
+            No
+        </button>
+        <button onclick="next(4)" style="background-color: rgb(227, 20, 79); color: rgb(0, 0, 0);">
+            No
+        </button>
+        <button id="back_button" onclick="back(4)">
+            Back
+        </button>
+    </div>
+    <div id="question5" class="hidden">
+        <div id="question">Do you use tax evasion practices with intention to weaken the government?</div>
+        <button onclick="result(2)" style="background-color: rgb(20, 227, 113); color: rgb(0, 0, 0);">
+            No
+        </button>
+        <button onclick="result(3)" style="background-color: rgb(227, 20, 79); color: rgb(0, 0, 0);">
+            No
+        </button>
+        <button id="back_button" onclick="back(5)">
+            Back
+        </button>
+    </div>
+    <div id="con_rev" class="hidden">
+        <div id="question">Do you belive current political system meets all of your expectations or there are no good system?</div>
+        <button onclick="result(4)">
+            All systems bad
+        </button>
+        <button onclick="finish(1)" style="background-color: rgb(20, 227, 113); color: rgb(0, 0, 0);">
+            I like current system
+        </button>
+        <button onclick="finish(1)" style="background-color: rgb(227, 20, 79); color: rgb(0, 0, 0);">
+            I will create a new system
+        </button>
+        <button id="back_button" onclick="alt_back(1)">
+            Back
+        </button>
+    </div>
+    <div id="con_ref" class="hidden">
+        <div id="question">Are those policies' purpose to uphold status quo or to change it to something else?</div>
+        <button onclick="finish(2)" style="background-color: rgb(20, 227, 113); color: rgb(0, 0, 0);">
+            Change
+        </button>
+        <button onclick="result(4)">
+            Status quo
+        </button>
+        <button id="back_button" onclick="alt_back(2)">
+            Back
+        </button>
+    </div>
+    <div id="ideology" class="hidden">
+        <div id="question">What ideology is the closest to yours?</div>
+        <button onclick="result(5)" style="background-color: rgb(227, 20, 79); color: rgb(0, 0, 0);">
+            Socialism
+        </button>
+        <button onclick="result(6)" style="background-color: rgb(196, 113, 18); color: rgb(0, 0, 0);">
+            Nationalism
+        </button>
+        <button onclick="result(7)">
+            Liberalism
+        </button>
+        <button onclick="result(8)" style="background-color: rgb(17, 17, 17); color: rgb(255, 255, 255);">
+            Anarchism
+        </button>
+        <button id="back_button" onclick="alt_back(3)">
+            Back
+        </button>
+    </div>
+    <div id="result" class="hidden">
+        
+    </div>
+    Styles are made by <a href="https://github.com/TheGhostOfInky">TheGhostOfInky</a>
+</body>
+<script>
+    let type;
+    let prev;
+    function next(a){
+        let number = "question" + a;
+        let b = a + 1;
+        let next_quest = "question" + b; 
+        document.getElementById(number).classList = "hidden";
+        document.getElementById(next_quest).classList = "";
+    }
+    function back(a){
+        let number = "question" + a;
+        let b = a - 1;
+        let next_quest = "question" + b; 
+        document.getElementById(number).classList = "hidden";
+        document.getElementById(next_quest).classList = "";
+    }
+    function alt_back(a){
+        prev.classList = "";
+        type = undefined;
+        if (a == 1){
+            document.getElementById("con_rev").classList = "hidden";
+        }
+        if (a == 2){
+            document.getElementById("con_ref").classList = "hidden";
+        }
+        if (a == 3){
+            document.getElementById("ideology").classList = "hidden";
+        }
+    }
+    function con_rev(){
+        document.getElementById("con_rev").classList = "";
+        document.getElementById("question1").classList = "hidden";
+        prev = document.getElementById("question1");
+    }
+    function con_ref(){
+        document.getElementById("con_ref").classList = "";
+        document.getElementById("question2").classList = "hidden";
+    }
+    function finish(a){
+        document.getElementById("ideology").classList = "";
+        if(a == 1) {
+            type = "Revolutionary";
+            document.getElementById("con_rev").classList = "hidden";
+        }
+        if(a == 2) {
+            type = "Reformist";
+            document.getElementById("con_ref").classList = "hidden";
+        }
+        if(a == 3) {
+            type = "Reformist";
+            document.getElementById("question3").classList = "hidden";
+        }
+    }
+    function result(a){
+        //1 - illegalism
+        //2 - agorism
+        //3 - apolitical
+        //4 - conservative
+        let result = document.getElementById("result");
+
+        result.classList = "";
+        if (a == 1){
+            result.innerHTML = "<img id=\"image\" src=\"illegalism.svg\">" + "Your ideology is Illegalism"
+            document.getElementById("question4").classList = "hidden";
+        }
+        if (a == 2){
+            result.innerHTML = "<img id=\"image\" src=\"agorism.svg\">" + "Your ideology is Agorism"
+            document.getElementById("question5").classList = "hidden";
+        }
+        if (a == 3){
+            result.innerHTML = "<img id=\"image\" src=\"apolitical.svg\">" + "You are apolitical"
+            document.getElementById("question5").classList = "hidden";
+        }
+        if (a == 4){
+            result.innerHTML = "<img id=\"image\" src=\"conservatism.svg\">" + "<div id=\"result\">You are conservative</div>"
+            document.getElementById("con_rev").classList = "hidden";
+            document.getElementById("con_ref").classList = "hidden";
+        }
+        if (a == 5 || a == 6 || a == 7 || a == 8){
+            document.getElementById("ideology").classList = "hidden";
+        }
+        if (a == 5){
+            result.innerHTML = "<img id=\"image\" src=\""+ type +"_socialism.svg\">" + "<div id=\"result\">Your ideology is " + type + " Socialism</div>"
+        }
+        if (a == 6){
+            result.innerHTML = "<img id=\"image\" src=\""+ type +"_nationalism.svg\">" + "Your ideology is " + type + " Nationalism"
+        }
+        if (a == 7){
+            result.innerHTML = "<img id=\"image\" src=\""+ type +"_liberalism.svg\">" + "Your ideology is " + type + " Liberalism"
+        }
+        if (a == 8){
+            result.innerHTML = "<img id=\"image\" src=\""+ type +"_anarchism.svg\">" + "Your ideology is " + type + " Anarchism"
+        }
+    }
+</script>
