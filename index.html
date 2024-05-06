@@ -217,20 +217,24 @@
     function con_ref(){
         document.getElementById("con_ref").classList = "";
         document.getElementById("question2").classList = "hidden";
+        prev = document.getElementById("question2");
     }
     function finish(a){
         document.getElementById("ideology").classList = "";
         if(a == 1) {
             type = "Revolutionary";
             document.getElementById("con_rev").classList = "hidden";
+            prev = document.getElementById("con_rev");
         }
         if(a == 2) {
             type = "Reformist";
             document.getElementById("con_ref").classList = "hidden";
+            prev = document.getElementById("con_ref");
         }
         if(a == 3) {
             type = "Reformist";
             document.getElementById("question3").classList = "hidden";
+            prev = document.getElementById("question3");
         }
     }
     function result(a){
