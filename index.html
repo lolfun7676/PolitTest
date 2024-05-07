@@ -41,7 +41,7 @@
     </div>
     <div id="question3" class="hidden">
         <div id="question">Do you control mass media resource and use it to influence population with your political views?</div>
-        <button onclick="finish(3)" style="background-color: rgb(20, 227, 113); color: rgb(0, 0, 0);">
+        <button onclick="con_pop()" style="background-color: rgb(20, 227, 113); color: rgb(0, 0, 0);">
             Yes
         </button>
         <button onclick="next(3)" style="background-color: rgb(227, 20, 79); color: rgb(0, 0, 0);">
@@ -52,7 +52,7 @@
         </button>
     </div>
     <div id="question4" class="hidden">
-        <div id="question">Do you commit robbery/theft alone or with friends?</div>
+        <div id="question">Do you commit crimes alone or with friends?</div>
         <button onclick="result(1)" style="background-color: rgb(20, 227, 113); color: rgb(0, 0, 0);">
             No
         </button>
@@ -99,6 +99,18 @@
             Status quo
         </button>
         <button id="back_button" onclick="alt_back(2)">
+            Back
+        </button>
+    </div>
+    <div id="con_pop" class="hidden">
+        <div id="question">Your influence's purpose to uphold status quo or to change it to something else?</div>
+        <button onclick="finish(3)" style="background-color: rgb(20, 227, 113); color: rgb(0, 0, 0);">
+            Change
+        </button>
+        <button onclick="result(4)">
+            Status quo
+        </button>
+        <button id="back_button" onclick="alt_back(4)">
             Back
         </button>
     </div>
@@ -151,8 +163,14 @@
         if (a == 2){
             document.getElementById("con_ref").classList = "hidden";
         }
+        if (a == 4){
+            document.getElementById("con_pop").classList = "hidden";
+        }
         if (a == 3){
             document.getElementById("ideology").classList = "hidden";
+            if (prev == document.getElementById("con_pop")){
+                prev = document.getElementById("question3");
+            }
             if (prev == document.getElementById("con_ref")){
                 prev = document.getElementById("question2");
             }
@@ -171,6 +189,11 @@
         document.getElementById("question2").classList = "hidden";
         prev = document.getElementById("question2");
     }
+    function con_pop(){
+        document.getElementById("con_pop").classList = "";
+        document.getElementById("question3").classList = "hidden";
+        prev = document.getElementById("question3");
+    }
     function finish(a){
         document.getElementById("ideology").classList = "";
         if(a == 1) {
@@ -185,8 +208,8 @@
         }
         if(a == 3) {
             type = "Reformist";
-            document.getElementById("question3").classList = "hidden";
-            prev = document.getElementById("question3");
+            document.getElementById("con_pop").classList = "hidden";
+            prev = document.getElementById("con_pop");
         }
     }
     function result(a){
@@ -213,6 +236,7 @@
             result.innerHTML = "<img id=\"image\" src=\"conservatism.svg\">" + "<div id=\"result\">You are conservative</div>"
             document.getElementById("con_rev").classList = "hidden";
             document.getElementById("con_ref").classList = "hidden";
+            document.getElementById("con_pop").classList = "hidden";
         }
         if (a == 5 || a == 6 || a == 7 || a == 8){
             document.getElementById("ideology").classList = "hidden";
